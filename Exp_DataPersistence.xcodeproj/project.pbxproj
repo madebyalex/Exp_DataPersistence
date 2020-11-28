@@ -13,6 +13,8 @@
 		113AB3BF2571C0F900A0AFF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113AB3BD2571C0F900A0AFF9 /* Main.storyboard */; };
 		113AB3C12571C0FB00A0AFF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113AB3C02571C0FB00A0AFF9 /* Assets.xcassets */; };
 		113AB3C42571C0FB00A0AFF9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 113AB3C22571C0FB00A0AFF9 /* LaunchScreen.storyboard */; };
+		113AB3CF2571DB8200A0AFF9 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 113AB3CE2571DB8200A0AFF9 /* settings.plist */; };
+		113AB3D22571DFD200A0AFF9 /* PlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113AB3D12571DFD200A0AFF9 /* PlistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		113AB3C02571C0FB00A0AFF9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		113AB3C32571C0FB00A0AFF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		113AB3C52571C0FB00A0AFF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		113AB3CE2571DB8200A0AFF9 /* settings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
+		113AB3D12571DFD200A0AFF9 /* PlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +63,12 @@
 				113AB3B72571C0F900A0AFF9 /* AppDelegate.swift */,
 				113AB3B92571C0F900A0AFF9 /* SceneDelegate.swift */,
 				113AB3BB2571C0F900A0AFF9 /* ViewController.swift */,
+				113AB3D12571DFD200A0AFF9 /* PlistViewController.swift */,
 				113AB3BD2571C0F900A0AFF9 /* Main.storyboard */,
 				113AB3C02571C0FB00A0AFF9 /* Assets.xcassets */,
 				113AB3C22571C0FB00A0AFF9 /* LaunchScreen.storyboard */,
 				113AB3C52571C0FB00A0AFF9 /* Info.plist */,
+				113AB3CE2571DB8200A0AFF9 /* settings.plist */,
 			);
 			path = Exp_DataPersistence;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				113AB3C42571C0FB00A0AFF9 /* LaunchScreen.storyboard in Resources */,
+				113AB3CF2571DB8200A0AFF9 /* settings.plist in Resources */,
 				113AB3C12571C0FB00A0AFF9 /* Assets.xcassets in Resources */,
 				113AB3BF2571C0F900A0AFF9 /* Main.storyboard in Resources */,
 			);
@@ -140,6 +147,7 @@
 				113AB3BC2571C0F900A0AFF9 /* ViewController.swift in Sources */,
 				113AB3B82571C0F900A0AFF9 /* AppDelegate.swift in Sources */,
 				113AB3BA2571C0F900A0AFF9 /* SceneDelegate.swift in Sources */,
+				113AB3D22571DFD200A0AFF9 /* PlistViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>currentAppTheme</key>
+	<string>Light</string>
+	<key>lightTheme</key>
+	<dict>
+		<key>textRGB</key>
+		<array>
+			<integer>46</integer>
+			<integer>58</integer>
+			<integer>77</integer>
+		</array>
+		<key>backgroundRGB</key>
+		<array>
+			<integer>255</integer>
+			<integer>255</integer>
+			<integer>255</integer>
+		</array>
+	</dict>
+	<key>darkTheme</key>
+	<dict>
+		<key>textRGB</key>
+		<array>
+			<integer>220</integer>
+			<integer>220</integer>
+			<integer>220</integer>
+		</array>
+		<key>backgroundRGB</key>
+		<array>
+			<integer>46</integer>
+			<integer>58</integer>
+			<integer>77</integer>
+		</array>
+	</dict>
+</dict>
+</plist>
