@@ -15,16 +15,38 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fullNameTextField.text = UserDefaults.standard.string(forKey: "fullName")
-        emailTextField.text = UserDefaults.standard.string(forKey: "email")
-        phoneTextField.text = UserDefaults.standard.string(forKey: "phone")
+        NotificationCenter.default.addObserver(self, selector: #selector(onUbiquitousKeyValueStoreDidChangeExternally), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
+        
+        NSUbiquitousKeyValueStore.default.synchronize()
+        
+        refreshUI()
+    }
+    
+    @objc func onUbiquitousKeyValueStoreDidChangeExternally(notification: Notification) {
+        let changeReason = notification.userInfo![NSUbiquitousKeyValueStoreChangeReasonKey] as! Int
+        let changedKeys = notification.userInfo![NSUbiquitousKeyValueStoreChangedKeysKey] as! [String]
+        
+        
+        switch changeReason {
+        case NSUbiquitousKeyValueStoreInitialSyncChange, NSUbiquitousKeyValueStoreServerChange, NSUbiquitousKeyValueStoreAccountChange:
+            
+            refreshUI()
+            
+        case NSUbiquitousKeyValueStoreQuotaViolationChange:
+            // Reduce amount of data store in iCloud Key-Value Store
+            print("Your data takes too much space")
+            
+        default:
+            break
+        }
+        
     }
 
 
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        UserDefaults.standard.setValue(fullNameTextField.text, forKey: "fullName")
-        UserDefaults.standard.setValue(emailTextField.text, forKey: "email")
-        UserDefaults.standard.setValue(phoneTextField.text, forKey: "phone")
+        NSUbiquitousKeyValueStore.default.setValue(fullNameTextField.text, forKey: "fullName")
+        NSUbiquitousKeyValueStore.default.setValue(emailTextField.text, forKey: "email")
+        NSUbiquitousKeyValueStore.default.setValue(phoneTextField.text, forKey: "phone")
         
         let dataSaved = UIAlertController(title: "Data saved! 🙌", message: "Your details has been saved.", preferredStyle: .alert)
         
@@ -36,7 +58,15 @@ class ViewController: UIViewController {
         
         if fullNameTextField.text != "" || emailTextField.text != "" {
             present(dataSaved, animated: true, completion: nil)
+            
+            NSUbiquitousKeyValueStore.default.synchronize()
         }
+    }
+    
+    func refreshUI() {
+        fullNameTextField.text = NSUbiquitousKeyValueStore.default.string(forKey: "fullName")
+        emailTextField.text = NSUbiquitousKeyValueStore.default.string(forKey: "email")
+        phoneTextField.text = NSUbiquitousKeyValueStore.default.string(forKey: "phone")
     }
     
     @IBAction func clearDataButtonTapped(_ sender: UIBarButtonItem) {
@@ -61,9 +91,9 @@ class ViewController: UIViewController {
         emailTextField.text = ""
         phoneTextField.text = ""
         
-        UserDefaults.standard.removeObject(forKey: "fullName")
-        UserDefaults.standard.removeObject(forKey: "email")
-        UserDefaults.standard.removeObject(forKey: "phone")
+        NSUbiquitousKeyValueStore.default.removeObject(forKey: "fullName")
+        NSUbiquitousKeyValueStore.default.removeObject(forKey: "email")
+        NSUbiquitousKeyValueStore.default.removeObject(forKey: "phone")
     }
     
 }
