@@ -23,14 +23,14 @@
 	<dict>
 		<key>textRGB</key>
 		<array>
-			<integer>220</integer>
-			<integer>220</integer>
-			<integer>220</integer>
+			<real>220</real>
+			<real>220</real>
+			<real>220</real>
 		</array>
 		<key>backgroundRGB</key>
 		<array>
-			<integer>46</integer>
-			<integer>58</integer>
+			<real>46</real>
+			<real>58</real>
 			<integer>77</integer>
 		</array>
 	</dict>

@@ -29,16 +29,7 @@ class PlistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let bundledSettingsURL = Bundle.main.url(forResource: "settings", withExtension: "plist")!
-        
-        let settingsURL = try! FileManager
-            .default
-            .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            .appendingPathComponent("settings.plist")
-        
-        if FileManager.default.fileExists(atPath: settingsURL.path) == false {
-            try! FileManager.default.copyItem(at: bundledSettingsURL, to: settingsURL)
-        }
+        let settingsURL = Bundle.main.url(forResource: "settings", withExtension: "plist")!
         
         let data = try! Data(contentsOf: settingsURL)
         
@@ -49,9 +40,7 @@ class PlistViewController: UIViewController {
     }
 
     func saveSettings() {
-        let settingsURL = try! FileManager
-            .default
-            .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let settingsURL = Bundle.main.url(forResource: "settings", withExtension: "plist")!
         
         let encoder = PropertyListEncoder()
         let encodedSettings = try! encoder.encode(self.settings)
@@ -63,6 +52,7 @@ class PlistViewController: UIViewController {
         self.settings?.currentAppTheme = self.themeControl.selectedSegmentIndex == 0 ? "Light" : "Dark"
         
         setTheme()
+        saveSettings()
     }
     
     
@@ -76,6 +66,8 @@ class PlistViewController: UIViewController {
             let textColor = UIColor.colorWithRedValue(redValue: settings.lightTheme.textRGB[0], greenValue: settings.lightTheme.textRGB[1], blueValue: settings.lightTheme.textRGB[2], alpha: 1.0)
             
             headlineLabel.textColor = textColor
+            headlineLabel.text = "Light mode"
+            subheadlineLabel.textColor = textColor
             
         } else {
             self.themeControl.selectedSegmentIndex = 1
@@ -84,6 +76,8 @@ class PlistViewController: UIViewController {
             let textColor = UIColor.colorWithRedValue(redValue: settings.darkTheme.textRGB[0], greenValue: settings.darkTheme.textRGB[1], blueValue: settings.darkTheme.textRGB[2], alpha: 1.0)
             
             headlineLabel.textColor = textColor
+            headlineLabel.text = "Dark mode"
+            subheadlineLabel.textColor = textColor
         }
     }
 }
