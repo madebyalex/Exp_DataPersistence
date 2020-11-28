@@ -19,17 +19,41 @@ class ViewController: UIViewController {
         emailTextField.text = UserDefaults.standard.string(forKey: "email")
         phoneTextField.text = UserDefaults.standard.string(forKey: "phone")
     }
-    
-    
+
 
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         UserDefaults.standard.setValue(fullNameTextField.text, forKey: "fullName")
         UserDefaults.standard.setValue(emailTextField.text, forKey: "email")
         UserDefaults.standard.setValue(phoneTextField.text, forKey: "phone")
+        
+        let dataSaved = UIAlertController(title: "Data saved! 🙌", message: "Your details has been saved.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Good", style: .default) { (action) in
+            print("Ok, UserDefaults work.")
+        }
+        
+        dataSaved.addAction(okAction)
+        
+        if fullNameTextField.text != "" || emailTextField.text != "" {
+            present(dataSaved, animated: true, completion: nil)
+        }
     }
     
     @IBAction func clearDataButtonTapped(_ sender: UIBarButtonItem) {
-        clearData()
+        
+        let dataClear = UIAlertController(title: "Wanna clear your details? 🧐", message: "This will permanently erase your data.", preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes, clear details", style: .destructive) { (action) in
+            self.clearData()
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .cancel) { (action) in
+            print("Clearing the data was so close. Phew! 😅")
+        }
+        
+        dataClear.addAction(yesAction)
+        dataClear.addAction(noAction)
+        present(dataClear, animated: true, completion: nil)
     }
     
     func clearData() {
